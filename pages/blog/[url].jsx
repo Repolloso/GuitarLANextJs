@@ -3,13 +3,14 @@ import Image from "next/image"
 import styles from '@/styles/blog.module.css'
 import { formatearFecha } from "@/utils/helpers"
 
-export default function Post({post}) {
+export default function Post({post, indicadorCarrito}) {
 
     const {titulo, contenido, imagen, url, publishedAt} = post[0].attributes
 
     return (
         <Layout
             title={titulo}
+            indicadorCarrito={indicadorCarrito}
         >
             <article className={`${styles.post} ${styles['mt-3']}`}>
                 <Image src={imagen.data.attributes.url} width={1000} height={400} alt={`Imagen Post - ${titulo}`} />

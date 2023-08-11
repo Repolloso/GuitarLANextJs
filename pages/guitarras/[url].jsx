@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 // Para hacer rutas dinamicas debemos crear un archivo con el nombre de la ruta dinamica, en este caso, [url].jsx
 // Agregar carrito viene del app (context)
-export default function Producto({guitarra, agregarCarrito}) {
+export default function Producto({guitarra, agregarCarrito, indicadorCarrito}) {
 
     // const router = useRouter()
     //como nombres el archivo de la ruta dinamica [url].jsx, el nombre del parametro dinamico es url, si ponemos [id].jsx, el nombre del parametro dinamico es id
@@ -36,7 +36,8 @@ export default function Producto({guitarra, agregarCarrito}) {
 
     return (
         <Layout
-            title={'Guitarra '+nombre}
+            title={'Guitarra ' + nombre}
+            indicadorCarrito={indicadorCarrito}
         >
             <div className={styles.guitarra}>
                 {/* para pasar imagenes debemos configurar el dominio desde el next.config.js */}
