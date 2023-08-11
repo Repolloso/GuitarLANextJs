@@ -29,7 +29,7 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto, 
                                 carrito.map((guitarra, i) => (
                                     <div key={i} className={styles.producto}>
                                         <div>
-                                            <Image src={guitarra.imagen} alt={`Imagen Guitarra - ${guitarra.nombre}`} width={250} height={480} />
+                                            <Image src={guitarra.imagen} alt={`Imagen Guitarra - ${guitarra.nombre}`} width={250} height={480} loading='lazy'/>
                                         </div>
                                         <div>
                                             <p className={styles.nombre}>{guitarra.nombre}</p>

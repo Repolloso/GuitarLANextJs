@@ -8,7 +8,6 @@ export default function Header({indicadorCarrito}) {
 
     // hook de next para saber en que pagina estamos y otras cosas mas
     const router = useRouter()
-    console.log(router.pathname === '/carrito')
     
     return (
         // llamamos a la clase header dentro del modulo styles
@@ -16,7 +15,7 @@ export default function Header({indicadorCarrito}) {
             <div className={`contenedor ${styles.barra}`}>
                {/* para poner imagenes debemos poner .src cuando llamamos a una foto */}
                 <Link href={'/'}>
-                    <Image src="/img/logo.svg" width={300} height={40} alt='imagen logotipo' />
+                    <Image src="/img/logo.svg" width={300} height={40} alt='imagen logotipo' loading='lazy'/>
                 </Link>
 
                 <nav className={styles.navegacion}>
@@ -47,7 +46,7 @@ export default function Header({indicadorCarrito}) {
                             <span className={styles.indicadorGlobo} id='indicadorGlobo'>
                                 {indicadorCarrito}
                             </span>
-                            <Image src="/img/carrito.png" width={30} height={25} alt='imagen carrito' />
+                            <Image src="/img/carrito.png" width={30} height={25} alt='imagen carrito' loading='lazy'/>
                         </div>
                     </Link>
                 </nav>

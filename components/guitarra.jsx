@@ -9,7 +9,7 @@ export default function Guitarra({guitarra}) {
     return (
         <div className={styles.guitarra}>
             {/* para pasar imagenes debemos configurar el dominio desde el next.config.js */}
-            <Image src={imagen.data.attributes.formats.medium.url} width={1000} height={800} alt={`Imagen Guitarra - ${nombre}`} />
+            <Image src={imagen.data.attributes.formats.medium.url} width={1000} height={800} alt={`Imagen Guitarra - ${nombre}`} loading='lazy'/>
 
             <div className={styles.contenido}>
                 <h3>{nombre}</h3>

@@ -13,7 +13,7 @@ export default function Post({post, indicadorCarrito}) {
             indicadorCarrito={indicadorCarrito}
         >
             <article className={`${styles.post} ${styles['mt-3']}`}>
-                <Image src={imagen.data.attributes.url} width={1000} height={400} alt={`Imagen Post - ${titulo}`} />
+                <Image src={imagen.data.attributes.url} width={1000} height={400} alt={`Imagen Post - ${titulo}`} loading='lazy'/>
 
                 <div className={`${styles.contenido}`}>
                     <h3>{titulo}</h3>

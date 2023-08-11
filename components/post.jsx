@@ -9,7 +9,7 @@ export default function Post({post}) {
 
     return (
         <article>
-            <Image src={imagen.data.attributes.formats.medium.url} width={600} height={400} alt={`Imagen Post - ${titulo}`} />
+            <Image src={imagen.data.attributes.formats.medium.url} width={600} height={400} alt={`Imagen Post - ${titulo}`} loading='lazy'/>
 
             <div className={styles.contenido}>
                 <h3>{titulo}</h3>

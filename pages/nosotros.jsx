@@ -13,7 +13,7 @@ const Nosotros = ({indicadorCarrito}) => {
         <h1 className="heading">Nosotros</h1>
 
         <div className={styles.contenido}>
-          <Image src="/img/nosotros.jpg" width={1000} height={800} alt="imagen sobre nosotros" />
+          <Image src="/img/nosotros.jpg" width={1000} height={800} alt="imagen sobre nosotros" loading='lazy'/>
           <div>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis fringilla quam, id tempor diam viverra vitae. Nam lacinia magna viverra turpis hendrerit, ac varius quam tempor. Etiam facilisis justo eu erat pulvinar placerat. Praesent tristique laoreet metus, ut mattis erat blandit eu. Nam sagittis placerat tellus quis aliquam. Cras id ornare nibh, nec mollis tortor.</p>
 
