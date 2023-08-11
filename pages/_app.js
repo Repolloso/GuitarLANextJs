@@ -31,19 +31,22 @@ export default function App({ Component, pageProps }) {
                 guitarraState.cantidad = guitarra.cantidad;
             } 
             return guitarraState;
-        });
-        // Se asigna al array
-        setCarrito([...carritoActualizado]);
-        localStorage.setItem('carrito', JSON.stringify( carrito ));
+          });
+          // Se asigna al array
+          setCarrito([...carritoActualizado]);
+          localStorage.setItem('carrito', JSON.stringify( carrito ));
+          console.log(carritoActualizado.length)
+              // Actualizar el indicador del carrito
+          setIndicadorCarrito(carritoActualizado.length);
+          localStorage.setItem('indicadorCarrito', JSON.stringify( carrito.length ));
     } else {
         // En caso de que el articulo no exista, es nuevo y se agrega
         setCarrito([...carrito, guitarra]);
         localStorage.setItem('carrito', JSON.stringify( carrito ));
+            // Actualizar el indicador del carrito
+        setIndicadorCarrito(carrito.length + 1);
+        localStorage.setItem('indicadorCarrito', JSON.stringify( carrito.length + 1 ));
     }
-
-    // Actualizar el indicador del carrito
-    setIndicadorCarrito(carrito.length + 1);
-    localStorage.setItem('indicadorCarrito', JSON.stringify( carrito.length + 1 ));
   }
 
   const eliminarProducto = id => {

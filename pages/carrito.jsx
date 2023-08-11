@@ -2,10 +2,13 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Layout from "@/components/layout"
 import styles from '@/styles/carrito.module.css'
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Carrito({carrito, actualizarCantidad, eliminarProducto, indicadorCarrito}) {
 
     const [total, setTotal] = useState(0)
+    const notify = () => toast.success('Producto eliminado del carrito!');
+    const notifyUpdate = () => toast.success('Cantidad actualizada!');
 
     useEffect(() => {
         const calcularTotal = carrito.reduce((total, guitarra) => total + (guitarra.precio * guitarra.cantidad), 0)
@@ -18,6 +21,11 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto, 
             indicadorCarrito={indicadorCarrito}
         >
             <main className="contenedor">
+                <Toaster
+                    position="top-right"
+                    reverseOrder={true}
+                    duration={3000}
+                />
                 <h1 className="heading">Carrito</h1>
 
                 <div className={styles.contenido}>
@@ -29,7 +37,7 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto, 
                                 carrito.map((guitarra, i) => (
                                     <div key={i} className={styles.producto}>
                                         <div>
-                                            <Image src={guitarra.imagen} alt={`Imagen Guitarra - ${guitarra.nombre}`} width={250} height={480} loading='lazy'/>
+                                            <Image src={guitarra.imagen} alt={`Imagen Guitarra - ${guitarra.nombre}`} width={250} height={480} loading="lazy"/>
                                         </div>
                                         <div>
                                             <p className={styles.nombre}>{guitarra.nombre}</p>
@@ -37,7 +45,10 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto, 
                                                 <p>Cantidad:</p>
                                                 <select 
                                                     className={styles.select} 
-                                                    onChange={e => actualizarCantidad({id: guitarra.id, cantidad: e.target.value})}
+                                                    onChange={(e) => {
+                                                        actualizarCantidad({id: guitarra.id, cantidad: e.target.value})
+                                                        notifyUpdate()
+                                                    }}
                                                     value={guitarra.cantidad}
                                                 >
                                                     <option value="1">1</option>
@@ -53,8 +64,11 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto, 
                                         <button
                                             className={styles.eliminar}
                                             type="button"
-                                            onClick={() => eliminarProducto(guitarra.id)}
-                                        >x</button>
+                                            onClick={() => {
+                                                eliminarProducto(guitarra.id)
+                                                notify()
+                                            }}
+                                        >❌</button>
                                     </div>
                                 ))
                             ) : (

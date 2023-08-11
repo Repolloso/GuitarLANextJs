@@ -3,6 +3,7 @@ import styles from '@/styles/guitarras.module.css'
 import Image from 'next/image'
 import Layout from '@/components/layout'
 import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
 // Para hacer rutas dinamicas debemos crear un archivo con el nombre de la ruta dinamica, en este caso, [url].jsx
 // Agregar carrito viene del app (context)
@@ -12,6 +13,7 @@ export default function Producto({guitarra, agregarCarrito, indicadorCarrito}) {
     //como nombres el archivo de la ruta dinamica [url].jsx, el nombre del parametro dinamico es url, si ponemos [id].jsx, el nombre del parametro dinamico es id
     const [cantidad, setCantidad] = useState(0)
     const {nombre, imagen, url, precio, descripcion} = guitarra[0].attributes
+    const notify = () => toast.success('Producto agregado al carrito!');
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -32,13 +34,21 @@ export default function Producto({guitarra, agregarCarrito, indicadorCarrito}) {
         
         // Pasando la informacion al context
         agregarCarrito(guitarraSeleccionada)
+
+        // Notificacion
+        notify()
     }
 
     return (
         <Layout
             title={'Guitarra ' + nombre}
             indicadorCarrito={indicadorCarrito}
-        >
+            >
+            <Toaster 
+                position="top-right"
+                reverseOrder={true}
+                duration={3000}
+            />
             <div className={styles.guitarra}>
                 {/* para pasar imagenes debemos configurar el dominio desde el next.config.js */}
                 <Image src={imagen.data.attributes.url} width={1000} height={800} alt={`Imagen Guitarra - ${nombre}`} loading='lazy'/>
