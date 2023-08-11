@@ -4,7 +4,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
     return (
-        <Html>
+        <Html lang='es'>
             <Head>
                 <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
