@@ -1,4 +1,4 @@
-Basic E-commerce done with:
+Basic E-commerce done with: 
 
 - Strapi
 - Next.js
