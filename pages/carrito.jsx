@@ -7,8 +7,8 @@ import toast, { Toaster } from 'react-hot-toast';
 export default function Carrito({carrito, actualizarCantidad, eliminarProducto, indicadorCarrito}) {
 
     const [total, setTotal] = useState(0)
-    const notify = () => toast.success('Producto eliminado del carrito!');
-    const notifyUpdate = () => toast.success('Cantidad actualizada!');
+    const notifyDelete = () => toast.success('Producto eliminado del carrito!', {icon: '😣'});
+    const notifyUpdate = () => toast.success('Cantidad actualizada!', {icon: '🤩'});
 
     useEffect(() => {
         const calcularTotal = carrito.reduce((total, guitarra) => total + (guitarra.precio * guitarra.cantidad), 0)
@@ -66,7 +66,7 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto, 
                                             type="button"
                                             onClick={() => {
                                                 eliminarProducto(guitarra.id)
-                                                notify()
+                                                notifyDelete()
                                             }}
                                         >❌</button>
                                     </div>
