@@ -3,7 +3,7 @@ import Image from "next/image"
 import Layout from "@/components/layout"
 import styles from '@/styles/carrito.module.css'
 
-export default function Carrito({carrito, actualizarCantidad, eliminarProducto}) {
+export default function Carrito({carrito, actualizarCantidad, eliminarProducto, indicadorCarrito}) {
 
     const [total, setTotal] = useState(0)
 
@@ -15,6 +15,7 @@ export default function Carrito({carrito, actualizarCantidad, eliminarProducto})
     return (
         <Layout
             title={'Carrito de compras'}
+            indicadorCarrito={indicadorCarrito}
         >
             <main className="contenedor">
                 <h1 className="heading">Carrito</h1>

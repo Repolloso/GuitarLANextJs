@@ -5,15 +5,14 @@ import Post from '@/components/post'
 import styles from '@/styles/grid.module.css'
 import Curso from '@/components/curso'
 
-export default function Home({guitarras, posts, curso}) {
-
-
-
+export default function Home({guitarras, posts, curso, indicadorCarrito}) {
+  
   return (
     <>
       <Layout 
         title={'Inicio'}
         description={'Blog de música, venta de guitarras y más'}
+        indicadorCarrito={indicadorCarrito}
       >
         <main className="contenedor">
           <h1 className="heading">Nuestra Colección</h1>

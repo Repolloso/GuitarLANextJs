@@ -7,12 +7,13 @@ import styles from '@/styles/grid.module.css'
 // Si necesitas datos en el momento de la compilación (build time) y no necesitas que se actualicen en cada petición, usa StaticProps --> se usa cuando la informacion no cambia en cada request, se usa para paginas informativas, documentacion, etc.
 // Si necesitas datos en el momento de la petición (request time) usa ServerSideProps --> cuando la pagina se actualiza cada poco tiempo o de forma continua.
 
-const Tienda = ({guitarras}) => {
+const Tienda = ({guitarras, indicadorCarrito}) => {
 
     return (
         <Layout
             title={'Tienda'}
             description={'Tienda virrtual de guitarras, bajos, baterías, GuitarLA'}
+            indicadorCarrito={indicadorCarrito}
         >
 
             <main className="contenedor">

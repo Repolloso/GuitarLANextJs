@@ -4,11 +4,12 @@ import { useRouter } from 'next/router'
 // styles hace referencia a todo el modulo en general y header hace referencia a la clase en especifico
 import styles from '../styles/header.module.css'
 
-export default function Header() {
+export default function Header({indicadorCarrito}) {
 
     // hook de next para saber en que pagina estamos y otras cosas mas
     const router = useRouter()
-
+    console.log(router.pathname === '/carrito')
+    
     return (
         // llamamos a la clase header dentro del modulo styles
         <header className={styles.header}>
@@ -35,7 +36,19 @@ export default function Header() {
                         Blog
                     </Link>
                     <Link className={ router.pathname === '/carrito' ? styles.active : ''} href="/carrito">
-                        <Image src="/img/carrito.png" width={30} height={25} alt='imagen carrito' />
+                        <div className={styles.indicador}>
+                        <style jsx>
+                            {`
+                                #indicadorGlobo {
+                                    background-color: ${router.pathname === '/carrito' ? 'black' : '#e99402'};
+                                }
+                            `}
+                        </style>
+                            <span className={styles.indicadorGlobo} id='indicadorGlobo'>
+                                {indicadorCarrito}
+                            </span>
+                            <Image src="/img/carrito.png" width={30} height={25} alt='imagen carrito' />
+                        </div>
                     </Link>
                 </nav>
             </div>

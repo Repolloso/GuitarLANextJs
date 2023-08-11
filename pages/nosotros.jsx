@@ -2,11 +2,12 @@ import Image from "next/image"
 import Layout from "../components/layout"
 import styles from '../styles/nosotros.module.css'
 
-const Nosotros = () => {
+const Nosotros = ({indicadorCarrito}) => {
   return (
     <Layout
       title={'Nosotros'}
       description={'Sobre nosotros, GuitarLA, tienda de música'}
+      indicadorCarrito={indicadorCarrito}
     >
       <main className="contenedor">
         <h1 className="heading">Nosotros</h1>
