@@ -26,7 +26,7 @@ export default function Post({post, indicadorCarrito}) {
 }
 
 export async function getServerSideProps({query: {url}}) {
-    const res = await fetch(`${process.env.API_URL}/posts?filters[url]=${url}&populate=imagen`)
+    const res = await fetch(`${process.env.API_URL}/posts?filters[url]=${url}&populate=imagen`, {next: { revalidate: 30 }})
     const {data:post} = await res.json()
 
     return {

@@ -81,7 +81,7 @@ export default function Producto({guitarra, agregarCarrito, indicadorCarrito}) {
 // cuando tenemos routing dinamico y usamos getStaticProps, debemos usar getStaticPaths para generar las rutas dinamicas, si no, no funcionara. No hay necesidad de usar el metodo getStaticPaths si estamos en una ruta no dinamica
 // getStaticPaths se usa para generar las rutas dinamicas, y getStaticProps se usa para obtener los datos de la ruta dinamica
 export async function getStaticPaths() {
-    const res = await fetch(`${process.env.API_URL}/guitarras`)
+    const res = await fetch(`${process.env.API_URL}/guitarras`, {next: {revalidate: 1500}})
     const {data:guitarras} = await res.json()
 
     // iteramos sobre el array de guitarras y retornamos un objeto con el parametro dinamico que queremos generar, esto se hace para que si hay 1000 guitarras, no se generen 1000 rutas dinamicas, sino que se generen solo las que necesitamos
@@ -104,7 +104,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({params: {url}}) {
     // si pasamos como parametro {datos} en getServerSideProps, podemos acceder a los parametros dinamicos de la url con datos.nombreDelParametroDinamico
 
-    const res = await fetch(`${process.env.API_URL}/guitarras?filters[url]=${url}&populate=imagen`)
+    const res = await fetch(`${process.env.API_URL}/guitarras?filters[url]=${url}&populate=imagen`, {next: {revalidate: 1500}})
     const {data:guitarra} = await res.json() 
     console.log(guitarra)
 

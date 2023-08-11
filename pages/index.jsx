@@ -56,9 +56,9 @@ export async function getStaticProps() {
   // cuando tenes 2 o mas fetch, podes usar Promise.all para que se ejecuten en paralelo y no uno despues del otro, no es recomendable usar await para mas de 1 fetch, en ese caso usar Promise.all
 
   const [guitarrasRes, postsRes, cursoRes] = await Promise.all([
-    fetch(urlGuitarras),
-    fetch(urlPosts),
-    fetch(urlCurso)
+    fetch(urlGuitarras, {next: { revalidate: 1000 }}),
+    fetch(urlPosts, {next: { revalidate: 1000 }}),
+    fetch(urlCurso, {next: { revalidate: 1000 }}),
   ])
 
   const [{data:guitarras}, {data:posts}, {data:curso}] = await Promise.all([

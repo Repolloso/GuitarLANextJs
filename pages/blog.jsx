@@ -1,6 +1,7 @@
 import Layout from "@/components/layout"
 import Post from "@/components/post"
 import styles from '@/styles/grid.module.css'
+import { revalidateTag } from "next/cache"
 
 const Blog = ({posts, indicadorCarrito}) => {
     return (
@@ -27,7 +28,7 @@ const Blog = ({posts, indicadorCarrito}) => {
 }
 
 export async function getStaticProps() {
-    const res = await fetch(`${process.env.API_URL}/posts?populate=imagen`)
+    const res = await fetch(`${process.env.API_URL}/posts?populate=imagen`, {next: { revalidate: 3600 }})
     const {data:posts} = await res.json()
 
     return {
