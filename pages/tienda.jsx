@@ -53,7 +53,7 @@ export default Tienda
 
 // La ventaja de usar getServerSideProps es que la informacion se va a cargar en el servidor de node.js en cada request, es decir, si la informacion cambia en strapi, no es necesario hacer un npm run build y un npm run start para que la informacion se actualice en el servidor de node.js, esto es muy util cuando la informacion cambia en cada request, por ejemplo, en una pagina de tienda, en una pagina de noticias, etc. La desventaja de esto es que siempre vas a estar consultando a la api y base de datos cada vez que se haga un request, lo que puede ser un poco lento. Si solo voy a mostrar informacion que no cambia en cada request, es mejor usar getStaticProps.
 export async function getServerSideProps() {
-    const res = await fetch(`${process.env.API_URL}/guitarras?populate=imagen`)
+    const res = await fetch(`${process.env.API_URL}/guitarras?populate=imagen`, {next: { revalidate: 15000 }})
     const {data:guitarras} = await res.json()
 
     return {
